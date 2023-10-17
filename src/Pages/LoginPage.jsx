@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import postData from "../utils/postData";
 // import { Link } from "react-router-dom";
 // import postData from "../utils/postData";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const url = "http://localhost:5000/reg";
+  const url = "http://localhost:5000/login";
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -13,8 +14,11 @@ function LoginPage(props) {
       email: email,
       password: password,
     };
-    console.log(user);
-    // postData(user, url);
+
+    // postData Sends the data to the server
+    postData(user, url).then((res) => {
+      console.log(res.text());
+    });
   };
 
   return (

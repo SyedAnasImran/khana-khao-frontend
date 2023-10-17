@@ -17,13 +17,13 @@ const SignupPage = (props) => {
       firstName: firstName,
       lastName: lastName,
     };
-    console.log(new_user);
+
+    // postData Sends the data to the server
     postData(new_user, url).then((res) => {
-      console.log(res);
+      console.log(res.text());
       setLoading(true);
     });
     setLoading(true);
-    // TODO: Send the data to the server
   };
   return (
     <div>
