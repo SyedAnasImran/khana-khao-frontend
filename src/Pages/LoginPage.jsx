@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import postData from "../utils/postData";
+import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 // import postData from "../utils/postData";
 
@@ -7,6 +8,7 @@ function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const url = "http://localhost:5000/login";
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,7 +19,11 @@ function LoginPage(props) {
 
     // postData Sends the data to the server
     postData(user, url).then((res) => {
-      console.log(res.text());
+      if (res.msg === true) {
+        navigate("/ChooseSpot");
+      } else {
+        alert(res.msg);
+      }
     });
   };
 

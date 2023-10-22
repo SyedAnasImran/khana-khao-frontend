@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import postData from "../utils/postData";
 
 const SignupPage = (props) => {
-  const [Loading, setLoading] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const url = "http://localhost:5000/signup";
 
+  //On submit
   const handleSubmit = (e) => {
     e.preventDefault();
     const new_user = {
@@ -20,11 +20,11 @@ const SignupPage = (props) => {
 
     // postData Sends the data to the server
     postData(new_user, url).then((res) => {
-      console.log(res.text());
-      setLoading(true);
+      alert(res.msg);
     });
-    setLoading(true);
   };
+
+  // rendered component
   return (
     <div>
       <h2 className="mt-6 text-center text-3xl text-orange-600 font-extrabold">

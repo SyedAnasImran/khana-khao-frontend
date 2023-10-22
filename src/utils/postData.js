@@ -4,7 +4,7 @@ async function postData(data, url) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  return response;
+  return response.json();
 }
 
 module.exports = postData;
