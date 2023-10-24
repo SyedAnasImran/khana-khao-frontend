@@ -7,7 +7,7 @@ function Spinner(props) {
     : "scale-60 transition ease-in-out";
   return (
     <div className={` ${height} flex items-center justify-center`}>
-      <img src={loader} className="h-[60px]" />
+      <img src={loader} className="h-[60px] " alt="" />
     </div>
   );
 }

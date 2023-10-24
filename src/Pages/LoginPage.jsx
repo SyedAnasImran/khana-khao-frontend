@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import postData from "../utils/postData";
 import { useNavigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
-// import postData from "../utils/postData";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const url = "http://localhost:5000/login";
   const navigate = useNavigate();
+
+  // Handle Login
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -18,6 +18,7 @@ function LoginPage(props) {
     };
 
     // postData Sends the data to the server
+
     postData(user, url).then((res) => {
       if (res.msg === true) {
         navigate("/ChooseSpot");
@@ -27,6 +28,7 @@ function LoginPage(props) {
     });
   };
 
+  // rendered Component
   return (
     <div>
       <h2 className="mt-6 text-center text-3xl text-orange-600 font-extrabold ">
