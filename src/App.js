@@ -1,5 +1,6 @@
 import ChooseSpotPage from "./Pages/ChooseSpot.jsx";
 import RegistrationPage from "./Pages/Registration.jsx";
+import Protected from "./utils/ProtectedRoutes.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -7,8 +8,12 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<RegistrationPage />} />
-          <Route path="/ChooseSpot" element={<ChooseSpotPage />} />
+          ProtectedRoutes
+          <Route path="/auth" element={<RegistrationPage />} />
+          <Route
+            path="/"
+            element={<Protected component={<ChooseSpotPage />} />}
+          />
         </Routes>
       </BrowserRouter>
     </div>

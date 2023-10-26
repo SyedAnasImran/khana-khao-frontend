@@ -21,7 +21,7 @@ function LoginPage(props) {
 
     postData(user, url).then((res) => {
       if (res.msg === true) {
-        navigate("/ChooseSpot");
+        navigate("/");
       } else {
         alert(res.msg);
       }
