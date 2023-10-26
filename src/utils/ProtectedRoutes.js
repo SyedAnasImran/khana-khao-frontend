@@ -15,10 +15,11 @@ function ProtectedRoutes(props) {
 
   useEffect(() => {
     getAuth().then((res) => {
-      // if not authorized refirect to /auth
+      // if not authorized redirect to /auth
       if (!res) navigate("/auth");
     });
   }, []);
+
   //   else return home component
   return component;
 }

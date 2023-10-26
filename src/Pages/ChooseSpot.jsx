@@ -2,14 +2,31 @@ import React from "react";
 import Card from "../elements/Card";
 import Logo from "../assets/Logo-sticker.png";
 import vendors from "../utils/vendorData";
+import { useNavigate } from "react-router-dom";
 
 const ChooseSpotPage = () => {
-  const handleSelect = () => {
-    console.log("clicked");
+  const logoutURL = "http://localhost:5000/logout";
+  const navigate = useNavigate();
+  const logoutUser = async () => {
+    console.log("Logout");
+    await fetch(logoutURL);
+    navigate("/auth");
+  };
+
+  const handleSelect = (key) => {
+    console.log(key === 1 ? "Cafe" : key === 2 ? "Bashir" : "Pizza Fast");
   };
 
   return (
     <div>
+      <div className="flex justify-end">
+        <button
+          onClick={logoutUser}
+          className="w-[100px] bg-orange-400 shadow-lg text-white m-4 p-3 rounded-[20px] hover:bg-orange-300 focus:outline-none hover:scale-105 transition ease-in-out "
+        >
+          Log Out
+        </button>
+      </div>
       <img src={Logo} alt="" style={{ height: "125px", margin: "auto" }} />
       <h1 className="text-center  text-orange-800 text-5xl py-[20px]">
         Choose Your Spot!
@@ -18,6 +35,8 @@ const ChooseSpotPage = () => {
         {vendors.map((e) => {
           return (
             <Card
+              key={e.cafeid}
+              id={e.cafeid}
               height="200px"
               width="auto"
               title={e.name}

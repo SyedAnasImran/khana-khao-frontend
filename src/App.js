@@ -8,7 +8,6 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          ProtectedRoutes
           <Route path="/auth" element={<RegistrationPage />} />
           <Route
             path="/"
