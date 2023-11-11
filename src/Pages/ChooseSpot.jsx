@@ -5,12 +5,11 @@ import vendors from "../utils/vendorData";
 import { useNavigate } from "react-router-dom";
 
 const ChooseSpotPage = () => {
-  const logoutURL = "http://localhost:5000/logout";
   const navigate = useNavigate();
   const logoutUser = async () => {
-    console.log("Logout");
-    await fetch(logoutURL);
-    navigate("/auth");
+    console.log("Logged Out");
+    localStorage.removeItem("token");
+    navigate("/reg");
   };
 
   const handleSelect = (key) => {

@@ -6,18 +6,12 @@ function ProtectedRoutes(props) {
   const navigate = useNavigate();
 
   //  user get authentcaion
-  async function getAuth() {
-    const url = "http://localhost:5000/auth";
-    let res = await fetch(url);
-    res = await res.json();
-    return res;
-  }
+  let auth = localStorage.getItem("token");
 
   useEffect(() => {
-    getAuth().then((res) => {
-      // if not authorized redirect to /auth
-      if (!res) navigate("/auth");
-    });
+    if (!auth) {
+      navigate("/reg");
+    }
   }, []);
 
   //   else return home component

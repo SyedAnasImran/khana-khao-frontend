@@ -4,11 +4,14 @@ import Protected from "./utils/ProtectedRoutes.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+  {
+    /* {<RegistrationPage />} */
+  }
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/auth" element={<RegistrationPage />} />
+          <Route path="/reg" element={<RegistrationPage />} />
           <Route
             path="/"
             element={<Protected component={<ChooseSpotPage />} />}

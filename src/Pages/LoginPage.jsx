@@ -20,7 +20,8 @@ function LoginPage(props) {
     // postData Sends the data to the server
 
     postData(user, url).then((res) => {
-      if (res.msg === true) {
+      if (res.msg === "Logged In") {
+        localStorage.setItem("token", res.token);
         navigate("/");
       } else {
         alert(res.msg);
@@ -32,7 +33,7 @@ function LoginPage(props) {
   return (
     <div>
       <h2 className="mt-6 text-center text-3xl text-orange-600 font-extrabold ">
-        Logi In
+        Log In
       </h2>
       <form onSubmit={handleLogin}>
         <div className="mb-4">
