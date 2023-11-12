@@ -11,6 +11,7 @@ const SignupPage = (props) => {
   //On submit
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const new_user = {
       email: email,
       password: password,
@@ -18,7 +19,7 @@ const SignupPage = (props) => {
       lastName: lastName,
     };
 
-    // postData Sends the data to the server
+    // postData Sends the data to the server, returns Json Object
     postData(new_user, url).then((res) => {
       alert(res.msg);
     });

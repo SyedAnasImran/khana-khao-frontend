@@ -6,12 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 const ChooseSpotPage = () => {
   const navigate = useNavigate();
-  const logoutUser = async () => {
-    console.log("Logged Out");
+
+  //Logout Function
+  const logoutUser = () => {
     localStorage.removeItem("token");
     navigate("/reg");
   };
 
+  //Handle Selected Cafe
   const handleSelect = (key) => {
     console.log(key === 1 ? "Cafe" : key === 2 ? "Bashir" : "Pizza Fast");
   };

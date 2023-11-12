@@ -5,6 +5,15 @@ import SignupPage from "./SignupPage";
 import LoginPage from "./LoginPage";
 import Spinner from "../elements/Spinner";
 
+/*
+_______________________________________________________________________________________
+
+  This is the Registration Page which uses "Login" and "Signup" boxes as components,
+  Login is the intial component, while Signup is rendred conditionally using signupFlag 
+_______________________________________________________________________________________
+
+  */
+
 const RegistrationPage = () => {
   const [signUpFlag, setSignUpFlag] = useState(false);
   const [Loading, setLoading] = useState(false);

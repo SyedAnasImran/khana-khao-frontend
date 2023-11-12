@@ -9,7 +9,6 @@ function LoginPage(props) {
   const navigate = useNavigate();
 
   // Handle Login
-
   const handleLogin = (e) => {
     e.preventDefault();
     const user = {
@@ -17,7 +16,7 @@ function LoginPage(props) {
       password: password,
     };
 
-    // postData Sends the data to the server
+    // postData Sends the data to the server, returns json Object
 
     postData(user, url).then((res) => {
       if (res.msg === "Logged In") {
