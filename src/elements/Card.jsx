@@ -5,7 +5,7 @@ const Card = (props) => {
   return (
     <button
       onClick={() => onClick(id)}
-      className={`flex flex-row  items-center rounded-[20px] shadow-lg p-10 m-[20px]`}
+      className={`flex flex-row  items-center rounded-[20px] shadow-lg p-10 m-[20px] hover:scale-105 transition ease-in-out`}
       style={{
         height: height,
         width: width,

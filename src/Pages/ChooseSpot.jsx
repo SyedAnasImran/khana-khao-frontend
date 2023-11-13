@@ -15,7 +15,7 @@ const ChooseSpotPage = () => {
 
   //Handle Selected Cafe
   const handleSelect = (key) => {
-    console.log(key === 1 ? "Cafe" : key === 2 ? "Bashir" : "Pizza Fast");
+    navigate(`/cafe${key}`);
   };
 
   return (

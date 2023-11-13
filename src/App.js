@@ -16,14 +16,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
+            path="/"
+            element={<Protected component={<ChooseSpotPage />} />}
+          />
+          <Route
             path="/reg"
             element={<ProtectedAuth component={<RegistrationPage />} />}
           />
-          {/* <Route
-            path="/"
-            element={<Protected component={<ChooseSpotPage />} />}
-          /> */}
-          <Route path="/" element={<Menu />} />
+          <Route path="/:cafeid" element={<Protected component={<Menu />} />} />
         </Routes>
       </BrowserRouter>
     </div>
