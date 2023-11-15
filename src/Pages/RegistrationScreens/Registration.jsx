@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import FoodImage from "../assets/food.png"; // Import your food image
-import Logo from "../assets/Logo-sticker.png";
+import FoodImage from "../../assets/food.png"; // Import your food image
+import Logo from "../../assets/Logo-sticker.png";
 import SignupPage from "./SignupPage";
 import LoginPage from "./LoginPage";
-import Spinner from "../elements/Spinner";
+import Spinner from "../../elements/Spinner";
 
 /*
 _______________________________________________________________________________________

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import postData from "../utils/postData";
+import postData from "../../utils/postData";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage(props) {

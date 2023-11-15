@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import postData from "../utils/postData";
+import postData from "../../utils/postData";
 
 const SignupPage = (props) => {
   const [firstName, setFirstName] = useState("");

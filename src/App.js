@@ -1,9 +1,9 @@
-import ChooseSpotPage from "./Pages/ChooseSpot.jsx";
-import RegistrationPage from "./Pages/Registration.jsx";
+import ChooseSpotPage from "./Pages/ClientScreens/ChooseSpot.jsx";
+import RegistrationPage from "./Pages/RegistrationScreens/Registration.jsx";
 import Protected from "./utils/ProtectedRoutes.js";
 import ProtectedAuth from "./utils/AuthProtection.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Menu from "./Pages/Menu.jsx";
+import MainMenu from "./Pages/ClientScreens/MainMenu.jsx";
 
 /*
   "Protected" is a generic component
@@ -23,7 +23,10 @@ function App() {
             path="/reg"
             element={<ProtectedAuth component={<RegistrationPage />} />}
           />
-          <Route path="/:cafe" element={<Protected component={<Menu />} />} />
+          <Route
+            path="/:cafe"
+            element={<Protected component={<MainMenu />} />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
