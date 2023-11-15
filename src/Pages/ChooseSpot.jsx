@@ -14,8 +14,14 @@ const ChooseSpotPage = () => {
   };
 
   //Handle Selected Cafe
-  const handleSelect = (key) => {
-    navigate(`/cafe${key}`);
+  const handleSelect = (cafeid) => {
+    let cafe_name =
+      cafeid === 1
+        ? "Cafeteria"
+        : cafeid === 2
+        ? "Shawarma Point"
+        : "Pizza Fast";
+    navigate(`/${cafe_name}`);
   };
 
   return (
@@ -45,7 +51,7 @@ const ChooseSpotPage = () => {
               color="white"
               bgColor="#ff9344"
               image={e.image}
-              onClick={handleSelect}
+              onClick={() => handleSelect(e.cafeid)}
             />
           );
         })}

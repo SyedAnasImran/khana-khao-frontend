@@ -23,7 +23,7 @@ function App() {
             path="/reg"
             element={<ProtectedAuth component={<RegistrationPage />} />}
           />
-          <Route path="/:cafeid" element={<Protected component={<Menu />} />} />
+          <Route path="/:cafe" element={<Protected component={<Menu />} />} />
         </Routes>
       </BrowserRouter>
     </div>
