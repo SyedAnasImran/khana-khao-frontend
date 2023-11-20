@@ -8,7 +8,7 @@ let vendors = [
   },
   {
     cafeid: 2,
-    name: "Shawarma Bashir",
+    name: "Shawarma Corner",
     location: "Adjacent Academic Block 3",
     image:
       "https://cdn.icon-icons.com/icons2/3277/PNG/512/kebab_durum_falafel_turkish_food_food_wrap_icon_208006.png",

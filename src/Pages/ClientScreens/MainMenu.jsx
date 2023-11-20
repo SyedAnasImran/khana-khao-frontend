@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import menuData from "../../utils/menuItemsData";
 import MenuItemCard from "../../elements/MenuItemCard";
 import NavBar from "./NavBar";
@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const MainMenu = () => {
   const [Cart, setCart] = useState([]);
-  const { cafe } = useParams();
+  const { cafe_name } = useParams();
 
   //Add to Cart
   function addToCart(item) {
@@ -32,7 +32,7 @@ const MainMenu = () => {
   return (
     //container
     <div>
-      <NavBar head={cafe} />
+      <NavBar head={cafe_name} />
       <div className="container mx-auto ">
         <div className="flex justify-end ">
           <button

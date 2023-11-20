@@ -8,14 +8,14 @@ const ChooseSpotPage = () => {
   const navigate = useNavigate();
 
   //Handle Selected Cafe
-  const handleSelect = (cafeid) => {
-    let cafe_name =
-      cafeid === 1
-        ? "Cafeteria"
-        : cafeid === 2
-        ? "Shawarma Point"
-        : "Pizza Fast";
-    navigate(`/${cafe_name}`);
+  const handleSelect = (cafe_name) => {
+    // let cafe_name =
+    //   cafeid === 1
+    //     ? "Cafeteria"
+    //     : cafeid === 2
+    //     ? "Shawarma Point"
+    //     : "Pizza Fast";
+    navigate(`/cafe/${cafe_name}`);
   };
 
   return (
@@ -38,7 +38,7 @@ const ChooseSpotPage = () => {
               color="white"
               bgColor="#ff9344"
               image={e.image}
-              onClick={() => handleSelect(e.cafeid)}
+              onClick={() => handleSelect(e.name)}
             />
           );
         })}

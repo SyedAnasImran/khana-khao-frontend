@@ -48,7 +48,7 @@ const Navbar = (props) => {
           }`}
         >
           <a
-            href={`/${props.cafe}`}
+            href={`/cafe/${head}`}
             className="mx-2 px-3 py-1 sm:m-4 hover:bg-orange-600 rounded-[40px] hover:text-white hover:scale-105 transition ease-in-out"
           >
             Home
