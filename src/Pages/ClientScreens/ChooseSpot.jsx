@@ -1,20 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../elements/Card";
 import Logo from "../../assets/Logo-sticker.png";
-import vendors from "../../utils/vendorData";
 import { useNavigate } from "react-router-dom";
 
 const ChooseSpotPage = () => {
+  const url = "http://localhost:5000/getCafeNames";
+
   const navigate = useNavigate();
+  const [CafeData, setCafeData] = useState([]);
+
+  // fetch data from api
+  const fetchCafeNames = async () => {
+    const result = await fetch(url);
+    const parsedResult = await result.json();
+    setCafeData(parsedResult);
+  };
+
+  //useeffect
+  useEffect(() => {
+    fetchCafeNames();
+  }, []);
 
   //Handle Selected Cafe
   const handleSelect = (cafe_name) => {
-    // let cafe_name =
-    //   cafeid === 1
-    //     ? "Cafeteria"
-    //     : cafeid === 2
-    //     ? "Shawarma Point"
-    //     : "Pizza Fast";
     navigate(`/cafe/${cafe_name}`);
   };
 
@@ -26,22 +34,23 @@ const ChooseSpotPage = () => {
         Choose Your Spot!
       </h1>
       <div className="grid grid-cols-1 justify-items-stretch sm:grid-cols-2 xl:grid-cols-3">
-        {vendors.map((e) => {
-          return (
-            <Card
-              key={e.cafeid}
-              id={e.cafeid}
-              height="200px"
-              width="auto"
-              title={e.name}
-              subTitle={e.location}
-              color="white"
-              bgColor="#ff9344"
-              image={e.image}
-              onClick={() => handleSelect(e.name)}
-            />
-          );
-        })}
+        {CafeData.length &&
+          CafeData.map((e) => {
+            return (
+              <Card
+                key={e.CAFE_ID}
+                id={e.CAFE_ID}
+                height="200px"
+                width="auto"
+                title={e.CAFE_NAME}
+                subTitle={e.LCOATION}
+                color="white"
+                bgColor="#ff9344"
+                image={e.IMAGE}
+                onClick={() => handleSelect(e.CAFE_NAME)}
+              />
+            );
+          })}
       </div>
     </div>
   );
