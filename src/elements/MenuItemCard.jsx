@@ -10,7 +10,7 @@ export default function MenuItemCard(props) {
       <div className="flex flex-row justify-between align-center text-orange-500  p-[10px]  rounded-[10px] shadow-md  hover:bg-orange-50  ">
         <div key={item.id} className="flex flex-col p-2 ">
           <h3 className="text-xl font-semibold  ">{item.name}</h3>
-          <p className="text-gray-500 mb-2 text-xs">Test item</p>
+          <p className="text-gray-400 mb-2 text-xs">Test item</p>
           <p>${item.price.toFixed(2)}</p>
         </div>
         <div className="flex flex-row items-center">
