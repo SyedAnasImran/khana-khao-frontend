@@ -65,6 +65,7 @@ const MainMenu = () => {
               borderRadius: "20px",
               minWidth: "300px",
             }}
+            closeOnDocumentClick={false}
             trigger={
               <button className="bg-cyan-600  p-2 mt-4 mr-6  font-semibold text-md text-white rounded-full hover:scale-[115%] transition ease-in-out ">
                 <ShoppingCartTwoToneIcon fontSize="large" />
@@ -77,7 +78,11 @@ const MainMenu = () => {
               // Popup Content renders Cart OR Checkout conditionally
               {
                 return CheckoutFlag ? (
-                  <CheckoutPopup toggleCheckout={toggleCheckout} />
+                  <CheckoutPopup
+                    close={close}
+                    Cart={Cart}
+                    toggleCheckout={toggleCheckout}
+                  />
                 ) : (
                   <CartPopup
                     close={close}

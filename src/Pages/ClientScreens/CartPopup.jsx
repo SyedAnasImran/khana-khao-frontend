@@ -13,6 +13,7 @@ export default function CartPopup(props) {
           <img
             className="block mx-[auto] w-[100px] text-center"
             src="https://cdn.icon-icons.com/icons2/2785/PNG/512/trolley_cart_cancel_icon_177409.png"
+            alt=""
           ></img>
         )}
       </div>
