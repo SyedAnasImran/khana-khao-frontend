@@ -24,7 +24,7 @@ function App() {
             element={<ProtectedAuth component={<RegistrationPage />} />}
           />
           <Route
-            path="/cafe/:cafe_name"
+            path="/cafe/:cafe_name/:cafe_id"
             element={<Protected component={<MainMenu />} />}
           />
         </Routes>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import menuData from "../../utils/menuItemsData";
 import MenuItemCard from "../../elements/MenuItemCard";
 import NavBar from "./NavBar";
 import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
@@ -7,23 +6,24 @@ import { useParams } from "react-router-dom";
 import Popup from "reactjs-popup";
 import CartPopup from "./CartPopup";
 import CheckoutPopup from "./CheckoutPopup";
+import postData from "../../utils/postData";
 
 const MainMenu = () => {
-  const { cafe_name } = useParams();
-  const [Cart, setCart] = useState([]);
+  const { cafe_name, cafe_id } = useParams();
   const [CheckoutFlag, setCheckoutFlag] = useState(false);
+  const [Cart, setCart] = useState([]);
+  const [MenuItems, setMenuItems] = useState([]);
 
-  // const [MenuItems, setMenuItems] = useState([]);
-
-  // const url = "";
-  // const fetchMenuItems = async () => {
-  // const result = await fetch(url);
-  // const parsedResult = await result.json();
-  // setMenuItems(parsedResult);
-  // };
+  //fetching menu from api
+  const url = "http://localhost:5000/cafe/menu";
+  const fetchMenuItems = async () => {
+    postData({ cafe_id }, url).then((result) => {
+      setMenuItems(result);
+    });
+  };
 
   useEffect(() => {
-    // fetchMenuItems();
+    fetchMenuItems();
   }, []);
 
   //Add to Cart
@@ -64,6 +64,7 @@ const MainMenu = () => {
             contentStyle={{
               borderRadius: "20px",
               minWidth: "300px",
+              maxWidth: "1000px",
             }}
             closeOnDocumentClick={false}
             trigger={
@@ -103,23 +104,23 @@ const MainMenu = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 px-10 justify-items-stretch ">
           {
             // MenuItems.length &&
-            menuData.map((item) => {
-              return (
-                <div>
-                  <MenuItemCard
-                    key={item.id}
-                    item={item}
-                    item_count={
-                      !Cart.includes(item)
-                        ? "-"
-                        : Cart[Cart.indexOf(item)].count
-                    }
-                    addToCart={addToCart}
-                    removeFromCart={removeFromCart}
-                  />
-                </div>
-              );
-            })
+            MenuItems.length &&
+              MenuItems.map((item) => {
+                return (
+                  <div key={item.ITEM_ID}>
+                    <MenuItemCard
+                      item={item}
+                      item_count={
+                        !Cart.includes(item)
+                          ? "-"
+                          : Cart[Cart.indexOf(item)].count
+                      }
+                      addToCart={addToCart}
+                      removeFromCart={removeFromCart}
+                    />
+                  </div>
+                );
+              })
           }
         </div>
       </div>

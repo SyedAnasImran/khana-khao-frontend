@@ -10,7 +10,7 @@ const ChooseSpotPage = () => {
   const [CafeData, setCafeData] = useState([]);
   const [Loading, setLoading] = useState(false);
   //API url
-  const url = "http://localhost:5000/getCafeNames";
+  const url = "http://localhost:5000/cafe/names";
 
   // fetch data from api
   const fetchCafeNames = async () => {
@@ -29,8 +29,8 @@ const ChooseSpotPage = () => {
   }, []);
 
   //Link to Cafe On Click
-  const handleSelect = (cafe_name) => {
-    navigate(`/cafe/${cafe_name}`);
+  const handleSelect = (cafe_name, cafe_id) => {
+    navigate(`/cafe/${cafe_name}/${cafe_id}`);
   };
 
   return (
@@ -56,7 +56,7 @@ const ChooseSpotPage = () => {
                   color="white"
                   bgColor="#ff9344"
                   image={e.IMAGE}
-                  onClick={() => handleSelect(e.CAFE_NAME)}
+                  onClick={() => handleSelect(e.CAFE_NAME, e.CAFE_ID)}
                 />
               );
             })}

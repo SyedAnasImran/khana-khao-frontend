@@ -1,6 +1,6 @@
 import React from "react";
 import "reactjs-popup/dist/index.css";
-import MenuItemCard from "../../elements/MenuItemCard";
+import CartCard from "../../elements/CartCard";
 
 export default function CartPopup(props) {
   const { close, Cart, addToCart, removeFromCart, toggleCheckout } = props;
@@ -17,30 +17,31 @@ export default function CartPopup(props) {
           ></img>
         )}
       </div>
-
-      {Cart.map((item) => {
-        return (
-          <div className="p-3">
-            <MenuItemCard
-              key={item.id}
-              item={item}
-              item_count={Cart[Cart.indexOf(item)].count}
-              addToCart={addToCart}
-              removeFromCart={removeFromCart}
-            />
-          </div>
-        );
-      })}
+      <div className="grid grid-cols-1 sm:grid-cols-2 justify-items-stretch">
+        {Cart.map((item) => {
+          return (
+            <div key={item.ITEM_ID}>
+              <CartCard
+                item={item}
+                item_count={Cart[Cart.indexOf(item)].count}
+                addToCart={addToCart}
+                removeFromCart={removeFromCart}
+              />
+            </div>
+          );
+        })}
+      </div>
       <div className="text-end">
         <button
-          className=" rounded-full m-2 px-4 py-2 mt-4 text-white text-[10px]  bg-orange-600 hover:bg-orange-500 shadow-lg  hover:scale-105 transition ease-in-out "
+          className=" rounded-full m-2 px-4 py-2 mt-4 text-white text-[10px]  bg-red-600 hover:bg-red-500 shadow-lg  hover:scale-105 transition ease-in-out "
           onClick={() => close()}
         >
-          Add Items
+          Close
         </button>
         <button
           className=" rounded-full px-4 py-2 mt-4 text-white text-[10px]  bg-cyan-600 hover:bg-cyan-500 shadow-lg  hover:scale-105 transition ease-in-out "
           onClick={() => toggleCheckout(true)}
+          disabled={!Cart.length}
         >
           Check Out
         </button>
