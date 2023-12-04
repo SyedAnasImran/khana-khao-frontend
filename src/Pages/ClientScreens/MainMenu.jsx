@@ -56,7 +56,7 @@ const MainMenu = () => {
   return (
     //container
     <div>
-      <NavBar head={cafe_name} />
+      <NavBar head={cafe_name} cafe_id={cafe_id} />
       <div className="container mx-auto ">
         <div className="flex justify-end ">
           {/* Popup window ______________________________________________________________*/}
@@ -83,6 +83,7 @@ const MainMenu = () => {
                     close={close}
                     Cart={Cart}
                     toggleCheckout={toggleCheckout}
+                    cafe_id={cafe_id}
                   />
                 ) : (
                   <CartPopup

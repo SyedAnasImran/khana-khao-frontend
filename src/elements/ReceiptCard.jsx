@@ -5,9 +5,9 @@ export default function ReceiptCard(props) {
 
   return (
     <div>
-      <div className="flex flex-row  justify-between align-center text-orange-500 rounded-[10px] shadow-sm hover:bg-orange-50  ">
+      <div className="flex flex-row  justify-between align-center text-orange-500 rounded-[10px] shadow-sm  ">
         <div className="flex flex-row items-center">
-          <div className="ml-5 font-bold text-cyan-600  ">{item.count}</div>
+          <div className="ml-5 font-bold text-cyan-600  ">{item.count}x</div>
 
           <img
             src={item.IMG}
@@ -22,7 +22,7 @@ export default function ReceiptCard(props) {
         </div>
         <div className="flex flex-row justify-evenly items-center ">
           <div className="px-2 text-orange-500  font-semibold">
-            Rs{item.count * item.PRICE}
+            Rs.{item.count * item.PRICE}
           </div>
         </div>
       </div>

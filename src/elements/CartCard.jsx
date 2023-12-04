@@ -6,7 +6,7 @@ export default function CartCard(props) {
   const { item, addToCart, removeFromCart, item_count } = props;
 
   return (
-    <div className="flex flex-row  justify-between align-center text-orange-500  rounded-[10px] shadow-sm  hover:bg-orange-50  ">
+    <div className="flex flex-row  m-2 justify-between align-center text-orange-500  rounded-[10px] shadow-sm  bg-orange-50  ">
       <div className="flex flex-row">
         <img
           src={item.IMG}

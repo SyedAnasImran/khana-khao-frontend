@@ -6,7 +6,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 //Logout Function
 
 const Navbar = (props) => {
-  const { head } = props;
+  const { head, cafe_id } = props;
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -16,6 +16,7 @@ const Navbar = (props) => {
 
   const logoutUser = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("email");
     navigate("/reg");
   };
 
@@ -48,10 +49,10 @@ const Navbar = (props) => {
           }`}
         >
           <a
-            href={`/cafe/${head}`}
+            href={`/cafe/${head}/${cafe_id}`}
             className="mx-2 px-3 py-1 sm:m-4 hover:bg-orange-600 rounded-[40px] hover:text-white hover:scale-105 transition ease-in-out"
           >
-            Home
+            Menu
           </a>
           <a
             href="/"
@@ -60,7 +61,7 @@ const Navbar = (props) => {
             Switch Cafe
           </a>
           <a
-            href="#"
+            href={`/cafe/${head}/${cafe_id}/MyOrders`}
             className="mx-2 px-3 py-1 sm:m-4 hover:bg-orange-600 rounded-[40px] hover:text-white hover:scale-105 transition ease-in-out"
           >
             My Orders

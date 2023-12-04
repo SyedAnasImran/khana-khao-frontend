@@ -4,6 +4,7 @@ import Protected from "./utils/ProtectedRoutes.js";
 import ProtectedAuth from "./utils/AuthProtection.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainMenu from "./Pages/ClientScreens/MainMenu.jsx";
+import MyOrders from "./Pages/ClientScreens/MyOrders.jsx";
 
 /*
   "Protected" is a generic component
@@ -26,6 +27,10 @@ function App() {
           <Route
             path="/cafe/:cafe_name/:cafe_id"
             element={<Protected component={<MainMenu />} />}
+          />
+          <Route
+            path="/cafe/:cafe_name/:cafe_id/MyOrders"
+            element={<Protected component={<MyOrders />} />}
           />
         </Routes>
       </BrowserRouter>

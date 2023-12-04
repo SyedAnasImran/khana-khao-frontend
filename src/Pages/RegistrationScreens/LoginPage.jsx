@@ -21,6 +21,7 @@ function LoginPage(props) {
     postData(user, url).then((res) => {
       if (res.msg === "Logged In") {
         localStorage.setItem("token", res.token);
+        localStorage.setItem("email", user.email);
         navigate("/");
       } else {
         alert(res.msg);
@@ -60,6 +61,7 @@ function LoginPage(props) {
             className="w-full px-4 py-3 shadow-lg rounded-[20px] focus:ring-[0.5px] focus:ring-orange-600  outline-none "
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            minlength="8"
             required
           />
         </div>

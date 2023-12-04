@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import ReceiptCard from "../../elements/ReceiptCard";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input/input";
+import { isValidPhoneNumber } from "react-phone-number-input";
+import postData from "../../utils/postData";
 
 export default function CheckoutPopup(props) {
-  const { close, Cart, toggleCheckout } = props;
-  const [Address, setAddress] = useState("");
+  const { close, Cart, toggleCheckout, cafe_id } = props;
+  const [Contact, setContact] = useState(" ");
+  const url = "http://localhost:5000/orders/confirm";
 
   //calculate Total Bill
   const calTotalBill = () => {
@@ -16,7 +21,29 @@ export default function CheckoutPopup(props) {
 
   //Confirm Order
   const confirmOrder = (e) => {
-    alert("Your Order Is Confirmed");
+    e.preventDefault();
+    const check = Contact && isValidPhoneNumber(Contact) ? true : false;
+    if (!check) {
+      alert("Enter Valid Number");
+      return;
+    }
+    let Order = {
+      customer_id: localStorage.getItem("email"),
+      cafe_id: cafe_id,
+      contact: Contact,
+      total: calTotalBill(),
+      items: [],
+    };
+    Cart.forEach((item) => {
+      Order.items.push({ ITEM_ID: item.ITEM_ID, QTY: item.count });
+    });
+    Cart.length = 0;
+    postData(Order, url).then((res) => {
+      alert(`Order Confirmed | Receipt ID:${res.order_id} `);
+    });
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   return (
@@ -38,13 +65,12 @@ export default function CheckoutPopup(props) {
       </div>
       <form onSubmit={confirmOrder}>
         <label>
-          <input
-            placeholder="Enter your Address"
-            type="text"
-            value={Address}
-            onChange={(e) => setAddress(e.target.value)}
+          <PhoneInput
+            country="PK"
+            placeholder="Enter phone number"
+            value={Contact}
+            onChange={setContact}
             className="text-sm text-orange-600 w-full px-4 py-2 shadow-sm rounded-b-xl outline outline-1 outline-orange-200  focus:ring-[0.5px] focus:ring-orange-400 focus:outline-none"
-            required // This attribute makes the input field mandatory
           />
         </label>
         <div className="flex flex-row items-center justify-between">

@@ -90,6 +90,7 @@ const SignupPage = (props) => {
             type="password"
             autoComplete="current-password"
             required
+            minLength={8}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
