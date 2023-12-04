@@ -38,7 +38,10 @@ export default function OrderItemCard(props) {
           ) : (
             Items.map((item) => {
               return (
-                <div className="flex flex-row  justify-between align-center text-orange-500 rounded-[10px] shadow-sm  text-lg  ">
+                <div
+                  key={item.ORDER_ID}
+                  className="flex flex-row  justify-between align-center text-orange-500 rounded-[10px] shadow-sm  text-lg  "
+                >
                   <div className="flex flex-row items-center">
                     <div className="ml-5 font-bold text-cyan-600  ">
                       {item.QTY}x
