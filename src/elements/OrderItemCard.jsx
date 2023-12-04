@@ -3,14 +3,22 @@ import { useEffect } from "react";
 import postData from "../utils/postData";
 
 export default function OrderItemCard(props) {
-  const { ORDER_ID, TOTAL } = props;
+  let { ORDER_ID } = props;
   const [Items, setItems] = useState([]);
+  const [Total, setTotal] = useState(0);
+  let total = 0;
+
   const url = "http://localhost:5000/orders/items";
+  const updateURL = "http://localhost:5000/orders/updateBill";
 
   const fetchOrderItems = async () => {
-    console.log(ORDER_ID);
-    postData({ ORDER_ID }, url).then((result) => {
-      console.log("ss", result.myOrderItems);
+    postData({ ORDER_ID }, url).then(async (result) => {
+      console.log("orderitems", result.myOrderItems);
+      result.myOrderItems.forEach((e) => {
+        total += e.PRICE * e.QTY;
+      });
+      await postData({ ORDER_ID, total }, updateURL);
+      setTotal(total);
       setItems(result.myOrderItems);
     });
   };
@@ -63,7 +71,7 @@ export default function OrderItemCard(props) {
         </div>
         <div className=" flex flex-row justify-end rounded-b-xl my-2 py-2 px-3  text-orange-500 text-2xl font-bold bg-orange-100">
           <div className="mr-6  font-light">Total </div>
-          <div>Rs.{Items.length ? TOTAL : "   -  "}</div>
+          <div>Rs.{Items.length ? Total : "   -  "}</div>
         </div>
       </div>
     </div>
