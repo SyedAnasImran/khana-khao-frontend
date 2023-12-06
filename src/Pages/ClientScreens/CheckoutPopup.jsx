@@ -37,10 +37,17 @@ export default function CheckoutPopup(props) {
     Cart.forEach((item) => {
       Order.items.push({ ITEM_ID: item.ITEM_ID, QTY: item.count });
     });
-    Cart.length = 0;
     postData(Order, url).then((res) => {
-      alert(`Order Confirmed | Receipt ID:${res.order_id} `);
+      let time = 0;
+      Order.items.forEach((item) => {
+        time += item.QTY * 4;
+      });
+
+      alert(
+        `Order Confirmed | Receipt ID:${res.order_id} pickup in ${time} mins `
+      );
     });
+    Cart.length = 0;
     setTimeout(() => {
       window.location.reload();
     }, 1000);
